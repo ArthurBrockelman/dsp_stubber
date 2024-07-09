@@ -23,15 +23,6 @@ set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 # Downloads CPM if not already downloaded. CPM is an easy-to-use package manager nicely integrated with CMake.
 include(cmake/cpm.cmake)
 
-# # This commands downloads AND configures JUCE. It sets up some variables, like JUCE_SOURCE_DIR.
-# CPMAddPackage(
-#     NAME JUCE
-#     GIT_TAG 8.0.0
-#     VERSION 8.0.0
-#     GITHUB_REPOSITORY juce-framework/JUCE
-#     SOURCE_DIR ${LIB_DIR}/juce
-# )
-
 # Adds googletest.
 CPMAddPackage(
     NAME GOOGLETEST
@@ -52,12 +43,14 @@ CPMAddPackage(
     SOURCE_DIR ${LIB_DIR}/AudioFile
 )
 
-CPMAddPackage(
-    NAME loris
-    GITHUB_REPOSITORY ngwese/loris
-    GIT_TAG SVN-to-Git-conversion
-    SOURCE_DIR ${LIB_DIR}/loris
-)
+# TODO: Maybe add loris at some point, couldn't get it compiling
+# CPMAddPackage(
+#     NAME loris
+#     GITHUB_REPOSITORY ngwese/loris
+#     GIT_TAG SVN-to-Git-conversion
+#     SOURCE_DIR ${LIB_DIR}/loris
+# )
+
 # This command allows running tests from the "build" folder (the one where CMake generates the project to).
 enable_testing()
 
