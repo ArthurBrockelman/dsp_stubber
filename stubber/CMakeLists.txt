@@ -11,6 +11,8 @@ target_sources(main
         src/main.cpp
         ${INCLUDE_DIR}/DSPExperiment.h
         ${INCLUDE_DIR}/DSPExperiment.cpp
+        ${INCLUDE_DIR}/DSPExperiment1.h
+        ${INCLUDE_DIR}/DSPExperiment1.cpp
 )
 
 # Sets the include directories of the plugin project.

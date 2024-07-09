@@ -7,6 +7,13 @@ DSPExperiment::DSPExperiment(std::string audioFilePath) {
     _AF = audioFile;
 }
 
+DSPExperiment::DSPExperiment(std::string audioFilePath, int blockSize) {
+    AudioFile<double> audioFile;
+    audioFile.load(audioFilePath);
+    audioFile.printSummary();
+    _AF = audioFile;
+}
+
 void DSPExperiment::PrintSamples() {
     int channel = 0;
     int numSamples = _AF.getNumSamplesPerChannel();
@@ -16,4 +23,9 @@ void DSPExperiment::PrintSamples() {
         std::cout << currentSample << "\n";
     }
 }
+
+void DSPExperiment::SaveFile() {
+    _AF.save("./output.wav");
+}
+
 
