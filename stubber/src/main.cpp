@@ -5,6 +5,6 @@
 
 int main() {
     DSPExperiment1 dsp{"/Users/arthurbrockelman/Ableton Stuff/SamplePacks/DATABROTH COMPOUND-FREE/DATABROTH COMPOUND-FREE/Amplifier Feedback.wav", 1024};
-    dsp.processBlock();
+    dsp.chunkify(1024);
     return 0;
 }

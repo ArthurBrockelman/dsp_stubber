@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        //Example config
+        // {
+        //     "name": "Debug Loris Experiments",
+        //     "type": "lldb",
+        //     "request": "launch",
+        //     "program": "${workspaceRoot}/build/loris_experiments",
+        //     "cwd": "${workspaceRoot}",
+        //     "preLaunchTask": "build"
+        // },
+       {
+        "name": "Run Main Stubber",
+        "type": "lldb",
+        "request": "launch",
+        "program": "${workspaceRoot}/build/stubber/main",
+        "cwd": "${workspaceRoot}",
+        "preLaunchTask": "cmake-build"
+       },
+    ]
+}
+

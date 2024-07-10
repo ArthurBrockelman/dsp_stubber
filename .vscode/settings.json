@@ -2,6 +2,29 @@
     "files.associations": {
         "Analyzer.C": "cpp",
         "lorisNonObj_pi.C": "cpp",
-        "Envelope.C": "cpp"
-    }
+        "Envelope.C": "cpp",
+        "Partial.C": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "__tree": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "span": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "chrono": "cpp",
+        "format": "cpp",
+        "ranges": "cpp",
+        "text_encoding": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
