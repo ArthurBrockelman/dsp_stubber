@@ -4,7 +4,9 @@
 #include <iostream>
 
 int main() {
-    DSPExperiment1 dsp{"/Users/arthurbrockelman/Ableton Stuff/SamplePacks/DATABROTH COMPOUND-FREE/DATABROTH COMPOUND-FREE/Amplifier Feedback.wav", 1024};
-    dsp.chunkify(1024);
+    DSPExperiment1 dsp{"/Users/arthurbrockelman/Ableton Stuff/SamplePacks/SPORE/SPORE_SAMPLES/AvalonSpore3.wav"};
+    dsp.Puke(44100);
+    dsp.SaveFile("./output.wav");
+    dsp.processBlock();
     return 0;
 }

@@ -4,7 +4,6 @@ project(AudioPlugin VERSION 0.1.0)
 
 set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 
 add_executable(main ./src/main.cpp)
 

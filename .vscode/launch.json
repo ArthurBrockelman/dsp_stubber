@@ -12,11 +12,12 @@
         // },
        {
         "name": "Run Main Stubber",
-        "type": "lldb",
+        "type": "cppdbg",
+        "MIMode": "lldb",
         "request": "launch",
-        "program": "${workspaceRoot}/build/stubber/main",
+        "program": "${workspaceRoot}/debug/stubber/main",
         "cwd": "${workspaceRoot}",
-        "preLaunchTask": "cmake-build"
+        "preLaunchTask": "cmake-build-debug"
        },
     ]
 }

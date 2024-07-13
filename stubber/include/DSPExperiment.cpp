@@ -1,4 +1,28 @@
 #include "DSPExperiment.h"
+#include <exception>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+
+template<typename Vector>
+auto split_vector(const Vector& v, unsigned number_lines) {
+  using Iterator = typename Vector::const_iterator;
+  std::vector<Vector> rtn;
+  Iterator it = v.cbegin();
+  const Iterator end = v.cend();
+
+  while (it != end) {
+    Vector v;
+    std::back_insert_iterator<Vector> inserter(v);
+    const auto num_to_copy = std::min(static_cast<unsigned>(
+        std::distance(it, end)), number_lines);
+    std::copy(it, it + num_to_copy, inserter);
+    rtn.push_back(std::move(v));
+    std::advance(it, num_to_copy);
+  }
+
+  return rtn;
+}
 
 DSPExperiment::DSPExperiment(std::string audioFilePath) {
     AudioFile<double> audioFile;
@@ -33,22 +57,19 @@ void DSPExperiment::unload() {
     }
 };
 
-std::vector<std::vector<double>> DSPExperiment::chunkify(int sz){
-    std::vector<std::vector<double>> chunks;
-    //assert( _AF.samples.size() % sz == 0 );
-    for (std::vector<double>& channel : _AF.samples) {
-        auto it = channel.begin();
-        while( it != channel.end() ) {
-            chunks.emplace_back( it, it + sz );
-            it += sz;
-        }
-    }
+std::vector<std::vector<std::vector<double>>> DSPExperiment::Chunkify(unsigned sz) {
+    std::vector<std::vector<std::vector<double>>> chunks; 
+    std::vector<std::vector<double>> samples = _AF.samples;
+    std::vector<std::vector<double>> chunked0 = split_vector(samples[0], sz);
+    std::vector<std::vector<double>> chunked1 = split_vector(samples[1], sz);
+    chunks.push_back(chunked0);
+    chunks.push_back(chunked1);
     return chunks;
 }
 
 
-void DSPExperiment::SaveFile() {
-    _AF.save("./output.wav");
+void DSPExperiment::SaveFile(std::string filePath) {
+    _AF.save(filePath);
 }
 
 
