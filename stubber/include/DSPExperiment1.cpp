@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <random>
 #include "../../libs/AudioFile/AudioFile.h"
+#include "Smoother.h"
+#include "FilterButterworth24db.h"
 
 template <typename E,typename X>
 void unroll(const std::vector<E>& v,std::vector<X>& out){
@@ -25,7 +27,17 @@ DSPExperiment1::DSPExperiment1(std::string audioFilePath, int blockSize) : DSPEx
 };
 
 void DSPExperiment1::processBlock() {
-    std::cout << _AF.isMono();
+    CFilterButterworth24db filter{};
+    std::vector<double> channel1 = _AF.samples[0];
+    std::vector<double> channel2 = _AF.samples[1];
+    for(double sample : channel1) {
+        channel1[sample] = filter.Run(sample);
+    }
+    for(double sample : channel2) {
+        channel2[sample] =  filter.Run(sample);
+    }
+    _AF.samples = {channel1, channel2};
+
 };
 
 void DSPExperiment1::Puke(int chunksize) {
@@ -43,14 +55,13 @@ void DSPExperiment1::Puke(int chunksize) {
     _AF.samples = std::vector{randomizedchannel1, randomizedchannel2};
 }
 
-void DSPExperiment1::Smooth(int chunksize, double threshold, int smoothingwindow) {
-    DSPExperiment1::Puke(chunksize);
+void DSPExperiment1::Smooth(Smoother& smoother) {
     std::vector<std::vector<double>> samples = _AF.samples;
-    std::vector<double> randomizedchannel1 = samples[0];
-    std::vector<double> randomizedchannel2 = samples[1];
-    for(double sample : randomizedchannel1) {
-         
-    }
+    std::vector<double> channel1 = samples[0];
+    std::vector<double> channel2 = samples[1];
+    std::vector<double> smoothedChannel1 = smoother.Smooth(channel1);
+    std::vector<double> smoothedChannel2 = smoother.Smooth(channel2);
+     _AF.samples = std::vector{ smoothedChannel1, smoothedChannel2};
 }
 
 

@@ -14,6 +14,10 @@ target_sources(main
         ${INCLUDE_DIR}/DSPExperiment.cpp
         ${INCLUDE_DIR}/DSPExperiment1.h
         ${INCLUDE_DIR}/DSPExperiment1.cpp
+        ${INCLUDE_DIR}/Smoother.h
+        ${INCLUDE_DIR}/Smoother.cpp
+        ${INCLUDE_DIR}/FilterButterworth24db.h
+        ${INCLUDE_DIR}/FilterButterworth24db.cpp
 )
 
 # Sets the include directories of the plugin project.
