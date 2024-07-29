@@ -3,7 +3,7 @@
 
 class DSPExperiment {
     public:
-        DSPExperiment(std::string audioFilePath);;
+        DSPExperiment(std::string audioFilePath);
         DSPExperiment(std::string audioFilePath, int blockSize);
         void PrintSamples();
 
